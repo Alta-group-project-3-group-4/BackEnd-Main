@@ -1,8 +1,8 @@
 package database
 
 import (
+	user "airbnb/feature/users/data"
 	"fmt"
-	"os/user"
 
 	"gorm.io/gorm"
 )
