@@ -1,7 +1,7 @@
 package data
 
 import (
-	"airbnb/features/users"
+	"airbnb/feature/users"
 )
 
 func UserEntityToUser(userEntity users.UserEntity) User {

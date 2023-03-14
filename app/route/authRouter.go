@@ -2,9 +2,9 @@ package router
 
 import (
 	middleware "airbnb/app/middleware"
-	_authData "airbnb/feature/users/data"
-	_authHandler "airbnb/feature/users/delivery"
-	_authService "airbnb/feature/users/service"
+	_authData "airbnb/feature/auth/data"
+	_authHandler "airbnb/feature/auth/delivery"
+	_authService "airbnb/feature/auth/service"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
