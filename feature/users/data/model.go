@@ -15,7 +15,6 @@ type User struct {
 	Password string
 	About    string
 	Address  string
-	Status   bool
 }
 
 func (user *User) BeforeCreate(tx *gorm.DB) (err error) {
