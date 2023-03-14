@@ -1,6 +1,7 @@
 package users
 
 import (
+	"airbnb/feature/homestay"
 	"time"
 )
 
@@ -12,9 +13,9 @@ type UserEntity struct {
 	Password   string `validate:"required"`
 	Address    string `validate:"required"`
 	About      string `validate:"required"`
-	// Homestay        home.Homestay
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	Homestay   homestay.HomestayEntity
+	CreatedAt  time.Time
+	UpdatedAt  time.Time
 }
 
 type UserServiceInterface interface {

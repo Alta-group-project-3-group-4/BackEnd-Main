@@ -9,7 +9,7 @@ import (
 type User struct {
 	gorm.Model
 	HomestayId uint
-	// Homestay        *team.Team `gorm:"foreignKey:HOmestayId"`
+	// Homestay   *homestay.Homestay `gorm:"foreignKey:HomestayId"`
 	Name     string
 	Email    string `gorm:"unique"`
 	Password string
