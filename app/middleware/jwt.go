@@ -25,11 +25,10 @@ func JWTMiddleware() echo.MiddlewareFunc {
 	})
 }
 
-func CreateToken(userId int, role string) (string, error) {
+func CreateToken(userId int) (string, error) {
 	expirationTime := jwt.NewNumericDate(time.Now().Add(time.Hour * 72))
 	claims := &JwtCustomClaims{
-		Id:   userId,
-		Role: role,
+		Id: userId,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: expirationTime,
 		},
