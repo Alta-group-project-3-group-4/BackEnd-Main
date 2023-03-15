@@ -19,4 +19,6 @@ func CommentRouter(db *gorm.DB, e *echo.Echo) {
 	g.Use(middleware.Authentication)
 	g.POST("", handler.Add())
 	g.DELETE("/:id", handler.Delete())
+
+	e.GET("/homestay/:id/comment", handler.GetHomestayComments())
 }
