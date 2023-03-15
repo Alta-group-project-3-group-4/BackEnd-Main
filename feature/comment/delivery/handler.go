@@ -60,3 +60,22 @@ func (cc *commentControl) Delete() echo.HandlerFunc {
 		return c.JSON(http.StatusOK, helpers.ResponseSuccess("Delete Data Success", nil))
 	}
 }
+
+func (cc *commentControl) GetHomestayComments() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		// claim := middlewares.ClaimsToken(c)
+		// userId := uint(claim.Id)
+
+		_id, _ := strconv.Atoi(c.Param("id"))
+		homeId := uint(_id)
+
+		res, err := cc.srv.GetHomestayComments(homeId)
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, map[string]interface{}{"message": "internal server error"})
+		}
+		return c.JSON(http.StatusOK, map[string]interface{}{
+			"data":    ListofCommentToResponse(res),
+			"message": "success show user feedback",
+		})
+	}
+}
