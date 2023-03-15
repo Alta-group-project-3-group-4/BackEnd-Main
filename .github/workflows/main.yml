@@ -35,14 +35,14 @@ jobs:
       - name: Connect to server using SSH
         uses: appleboy/ssh-action@master
         with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
-          git pull origin main 
-          docker stop project 
-          docker rm project
-          docker rmi ${{ secrets.DOCKER_USER }}/project
-          docker pull ${{ secrets.DOCKER_USER }}/project-
-          docker run -d -p 8080:8080 -e SERVER_PORT=${{ secrets.SERVER_PORT }} -e SECRETKEY=${{ secrets.SECRETKEY }} -e DBUSERNAME=${{ secrets.DBUSERNAME }} -e DBPASS=${{ secrets.DBPASS }} -e DBHOST=${{ secrets.DBHOST }} -e DBPORT=${{ secrets.DBPORT }} -e DBNAME=${{ secrets.DBNAME }} -e AWS_BUCKET_NAME=${{secrets.AWS_BUCKET_NAME}} -e AWS_REGION=${{secrets.AWS_REGION}} -e ACCESS_KEY_IAM=${{secrets.ACCESS_KEY_IAM}} -e SECRET_KEY_IAM=${{secrets.SECRET_KEY_IAM}} --name project ${{ secrets.DOCKER_USER }}/project:latest
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            git pull origin main 
+            docker stop project 
+            docker rm project
+            docker rmi ${{ secrets.DOCKER_USER }}/project
+            docker pull ${{ secrets.DOCKER_USER }}/project-
+            docker run -d -p 8080:8080 -e SERVER_PORT=${{ secrets.SERVER_PORT }} -e SECRETKEY=${{ secrets.SECRETKEY }} -e DBUSERNAME=${{ secrets.DBUSERNAME }} -e DBPASS=${{ secrets.DBPASS }} -e DBHOST=${{ secrets.DBHOST }} -e DBPORT=${{ secrets.DBPORT }} -e DBNAME=${{ secrets.DBNAME }} -e AWS_BUCKET_NAME=${{secrets.AWS_BUCKET_NAME}} -e AWS_REGION=${{secrets.AWS_REGION}} -e ACCESS_KEY_IAM=${{secrets.ACCESS_KEY_IAM}} -e SECRET_KEY_IAM=${{secrets.SECRET_KEY_IAM}} --name project ${{ secrets.DOCKER_USER }}/project:latest
