@@ -16,6 +16,8 @@ func InitRouter(db *gorm.DB, e *echo.Echo) {
 	SwaggerRouter(e)
 	AuthRouter(db, e)
 	UserRouter(db, e)
+	HomeRouter(db, e)
+	CommentRouter(db, e)
 
 }
 
