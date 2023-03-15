@@ -17,13 +17,9 @@ func New(ud comment.CommentData) comment.CommentService {
 }
 
 // perlu mencari extract token
-func (cuc *commentUseCase) Add(token interface{}, newComment comment.Core) error {
-	userId := helper.ExtractToken(token)
-	if userId <= 0 {
-		return errors.New("id tidak valid")
-	}
+func (cuc *commentUseCase) Add(newComment comment.Core) error {
 
-	err := cuc.qry.Add(uint(userId), newComment)
+	err := cuc.qry.Add(newComment)
 	if err != nil {
 		msg := ""
 		if strings.Contains(err.Error(), "duplicated") {
@@ -37,6 +33,11 @@ func (cuc *commentUseCase) Add(token interface{}, newComment comment.Core) error
 	return nil
 }
 
-func (cuc *commentUseCase) Delete(token interface{}, ID uint) error {
+func (cuc *commentUseCase) Delete(userId, id uint) error {
+	err := cuc.qry.Delete(userId, id)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }

@@ -1,9 +1,11 @@
 package handler
 
 import (
+	middlewares "airbnb/app/middleware"
 	"airbnb/feature/comment"
 	"airbnb/utils/helpers"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 )
@@ -20,7 +22,6 @@ func New(srv comment.CommentService) comment.CommentHandler {
 
 func (cc *commentControl) Add() echo.HandlerFunc {
 	return func(c echo.Context) error {
-		token := c.Get("user")
 
 		input := AddCommentRequest{}
 
@@ -30,7 +31,11 @@ func (cc *commentControl) Add() echo.HandlerFunc {
 			})
 		}
 
-		err2 := cc.srv.Add(token, *ToCore(input))
+		claim := middlewares.ClaimsToken(c)
+		userId := claim.Id
+		input.UserId = uint(userId)
+
+		err2 := cc.srv.Add(*ToCore(input))
 		if err2 != nil {
 			return c.JSON(http.StatusBadRequest, helpers.ResponseFail(err2.Error()))
 		}
@@ -40,6 +45,18 @@ func (cc *commentControl) Add() echo.HandlerFunc {
 	}
 }
 
-func (uc *commentControl) Delete() echo.HandlerFunc {
-	return nil
+func (cc *commentControl) Delete() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		_id, _ := strconv.Atoi(c.Param("id"))
+		id := uint(_id)
+
+		claim := middlewares.ClaimsToken(c)
+		userId := uint(claim.Id)
+
+		if err := cc.srv.Delete(userId, id); err != nil {
+			return c.JSON(http.StatusNotFound, helpers.ResponseFail(err.Error()))
+		}
+
+		return c.JSON(http.StatusOK, helpers.ResponseSuccess("Delete Data Success", nil))
+	}
 }

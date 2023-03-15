@@ -16,11 +16,11 @@ type CommentHandler interface {
 }
 
 type CommentService interface {
-	Add(token interface{}, newComment Core) error
-	Delete(token interface{}, ID uint) error
+	Add(newComment Core) error
+	Delete(userId, id uint) error
 }
 
 type CommentData interface {
-	Add(userId uint, newComment Core) error
-	Delete(userId, ID uint) error
+	Add(newComment Core) error
+	Delete(userId, id uint) error
 }
