@@ -1,6 +1,11 @@
 package data
 
-import "gorm.io/gorm"
+import (
+	homestay "airbnb/feature/homestay/data"
+	user "airbnb/feature/users/data"
+
+	"gorm.io/gorm"
+)
 
 type Comment struct {
 	gorm.Model
@@ -8,4 +13,6 @@ type Comment struct {
 	HomeId      uint
 	Rate        float32
 	Description string
+	User        *user.User         `gorm:"foreignKey:UserId"`
+	Home        *homestay.Homestay `gorm:"foreignKey:HomeId"`
 }
