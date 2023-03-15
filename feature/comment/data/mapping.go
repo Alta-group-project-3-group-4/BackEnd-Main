@@ -25,3 +25,20 @@ func DataToCore(data Comment) comment.Core {
 		Description: data.Description,
 	}
 }
+
+func (dataModel *HomeComment) HomeCommentToCore() comment.Core {
+	return comment.Core{
+		ID:          dataModel.ID,
+		UserId:      dataModel.UserId,
+		Rate:        dataModel.Rate,
+		Description: dataModel.Description,
+	}
+}
+
+func ListHomeCommentToCore(dataModels []HomeComment) []comment.Core {
+	var dataCore []comment.Core
+	for _, value := range dataModels {
+		dataCore = append(dataCore, value.HomeCommentToCore())
+	}
+	return dataCore
+}

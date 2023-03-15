@@ -16,3 +16,10 @@ type Comment struct {
 	User        *user.User         `gorm:"foreignKey:UserId"`
 	Home        *homestay.Homestay `gorm:"foreignKey:HomeId"`
 }
+
+type HomeComment struct {
+	ID          uint
+	UserId      uint
+	Rate        float32
+	Description string
+}

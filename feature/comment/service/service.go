@@ -3,6 +3,7 @@ package service
 import (
 	"airbnb/feature/comment"
 	"errors"
+	"log"
 	"strings"
 )
 
@@ -40,4 +41,13 @@ func (cuc *commentUseCase) Delete(userId, id uint) error {
 	}
 
 	return nil
+}
+
+func (cuc *commentUseCase) GetHomestayComments(homeId uint) ([]comment.Core, error) {
+	res, err := cuc.qry.GetHomestayComments(homeId)
+	if err != nil {
+		log.Println("query error", err.Error())
+		return []comment.Core{}, errors.New("query error, problem with server")
+	}
+	return res, nil
 }
