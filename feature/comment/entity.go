@@ -13,14 +13,17 @@ type Core struct {
 type CommentHandler interface {
 	Add() echo.HandlerFunc
 	Delete() echo.HandlerFunc
+	GetHomestayComments() echo.HandlerFunc
 }
 
 type CommentService interface {
 	Add(newComment Core) error
 	Delete(userId, id uint) error
+	GetHomestayComments(homeId uint) ([]Core, error)
 }
 
 type CommentData interface {
 	Add(newComment Core) error
 	Delete(userId, id uint) error
+	GetHomestayComments(homeId uint) ([]Core, error)
 }
