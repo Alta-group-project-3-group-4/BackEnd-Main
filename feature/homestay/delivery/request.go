@@ -13,6 +13,7 @@ type CreateFormat struct {
 }
 
 type UpdateFormat struct {
+	UserId    uint
 	ID        uint   `json:"id" form:"id"`
 	Name      string `json:"name" form:"name"`
 	Deskripsi string `json:"deskripsi" form:"deskripsi"`

@@ -9,6 +9,7 @@ type CreateResponse struct {
 }
 
 type UpdateResponse struct {
+	UserId    uint
 	ID        uint   `json:"id"`
 	Name      string `json:"name"`
 	Deskripsi string `json:"deskripsi"`
@@ -28,6 +29,7 @@ func ToResponse(core interface{}, code string) interface{} {
 	case "update":
 		cnv := core.(homestay.HomestayEntity)
 		res = UpdateResponse{
+			UserId:    cnv.UserId,
 			ID:        cnv.Homestay_Id,
 			Name:      cnv.Name,
 			Price:     int(cnv.Price),
