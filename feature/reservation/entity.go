@@ -7,14 +7,14 @@ import (
 type Core struct {
 	Id         uint
 	UserId     uint
-	HomestayId uint
+	HomestayId uint `validate:"required"`
 	Ticket     string
 	BookDate   string
-	CheckIn    string
-	CheckOut   string
-	Price      int
+	CheckIn    string `validate:"required"`
+	CheckOut   string `validate:"required"`
+	Price      int    `validate:"required"`
 	Status     string
-	Bank       string
+	Bank       string `validate:"required"`
 	VANumber   string
 }
 
