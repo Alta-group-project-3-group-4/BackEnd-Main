@@ -21,6 +21,7 @@ func NewRoom(repo home.RepositoryInterface) home.ServiceInterface {
 
 // CreateRoom implements room.ServiceInterface
 func (service *HomeService) Create(input home.HomestayEntity) error {
+
 	err := service.homeRepository.Create(input)
 
 	if err != nil {

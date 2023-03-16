@@ -1,8 +1,12 @@
 package delivery
 
-import "airbnb/feature/homestay"
+import (
+	"airbnb/feature/homestay"
+	"time"
+)
 
 type CreateFormat struct {
+	UserId    uint
 	Name      string `json:"name" form:"name"`
 	Deskripsi string `json:"deskripsi" form:"deskripsi"`
 	Price     int    `json:"price" form:"price"`
@@ -26,6 +30,8 @@ func ToDomain(i interface{}) homestay.HomestayEntity {
 			Name:      cnv.Name,
 			Price:     float64(cnv.Price),
 			Deskripsi: cnv.Deskripsi,
+			CreatedAt: time.Time{},
+			UpdatedAt: time.Time{},
 		}
 	case GetId:
 		cnv := i.(GetId)

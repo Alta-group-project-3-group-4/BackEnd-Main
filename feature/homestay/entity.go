@@ -6,6 +6,7 @@ import (
 
 type HomestayEntity struct {
 	Homestay_Id uint
+	UserId      uint
 	Name        string  `validate:"required"`
 	Price       float64 `validate:"required"`
 	Deskripsi   string  `validate:"required"`

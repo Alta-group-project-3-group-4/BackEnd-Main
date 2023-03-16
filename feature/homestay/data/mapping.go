@@ -6,6 +6,7 @@ import (
 
 func HomestayEntityToHome(homeEntity homestay.HomestayEntity) Homestay {
 	return Homestay{
+		UserId:      homeEntity.UserId,
 		Name:        homeEntity.Name,
 		Price:       homeEntity.Price,
 		Description: homeEntity.Deskripsi,

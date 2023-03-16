@@ -1,6 +1,7 @@
 package delivery
 
 import (
+	middlewares "airbnb/app/middleware"
 	"airbnb/feature/homestay"
 	"airbnb/utils/helpers"
 	"net/http"
@@ -27,11 +28,17 @@ func (h *Homehandler) CreateRoom(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, helpers.ResponseFail(errBind.Error()))
 	}
 
-	err := h.Service.Create(ToDomain(homes))
+	claim := middlewares.ClaimsToken(c)
+	userId := claim.Id
+	homes.UserId = uint(userId)
+
+	dom := ToDomain(homes)
+	dom.UserId = homes.UserId
+	err := h.Service.Create(dom)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, helpers.ResponseFail(errBind.Error()))
 	}
-	return c.JSON(http.StatusOK, helpers.ResponseSuccess("Create Data Success", ToResponseHomestay(err)))
+	return c.JSON(http.StatusOK, helpers.ResponseSuccess("Create Data Success", nil))
 
 }
 
@@ -69,6 +76,6 @@ func (uc *Homehandler) Delete() echo.HandlerFunc {
 			return c.JSON(http.StatusBadRequest, helpers.ResponseFail(del.Error()))
 		}
 
-		return c.JSON(http.StatusOK, helpers.ResponseSuccess("sukses menghapus buku", del))
+		return c.JSON(http.StatusOK, helpers.ResponseSuccess("sukses menghapus data", del))
 	}
 }

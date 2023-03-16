@@ -16,8 +16,9 @@ func ImageRouter(db *gorm.DB, e *echo.Echo) {
 	handler := _Handler.New(service)
 
 	g := e.Group("/images")
-	e.GET("/gambar", handler.Getall)
 	g.Use(middleware.Authentication)
-	e.POST("/gambar", handler.CreateGambar)
+	g.GET("/gambar", handler.Getall)
+
+	g.POST("/gambar", handler.CreateGambar)
 
 }
