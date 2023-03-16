@@ -46,7 +46,7 @@ func (uq *commentQuery) Delete(userId, id uint) error {
 func (uq *commentQuery) GetHomestayComments(homeId uint) ([]comment.Core, error) {
 	res := []HomeComment{}
 	// err := uq.db.Where("user_id = ?", userID).Find(&res).Error
-	err := uq.db.Raw("SELECT comments.id, comments.user_id, comments.rate, comments.description FROM comments WHERE products.deleted_at is NULL AND comments.home_id=?", homeId).Scan(&res).Error
+	err := uq.db.Raw("SELECT comments.id, comments.user_id, comments.rate, comments.description FROM comments WHERE comments.deleted_at is NULL AND comments.home_id=?", homeId).Scan(&res).Error
 
 	if err != nil {
 		log.Println("query error", err.Error())
