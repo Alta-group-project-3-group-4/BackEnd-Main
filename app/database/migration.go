@@ -1,8 +1,9 @@
 package database
 
 import (
-	home "airbnb/feature/homestay/data"
 	comment "airbnb/feature/comment/data"
+	home "airbnb/feature/homestay/data"
+	img "airbnb/feature/images/data"
 	user "airbnb/feature/users/data"
 	"fmt"
 
@@ -14,7 +15,7 @@ func InitMigration(db *gorm.DB) {
 		&user.User{},
 		&home.Homestay{},
 		&comment.Comment{},
-
+		&img.Image{},
 	)
 
 	if err != nil {
