@@ -4,9 +4,9 @@ import "airbnb/feature/comment"
 
 type AddCommentRequest struct {
 	UserId      uint
-	HomeId      uint    `json:"home_id" form:"home_id"`
-	Rate        float32 `json:"rate" form:"rate"`
-	Description string  `json:"description" form:"description"`
+	HomeId      uint    `json:"id_homestay" form:"id_homestay"`
+	Rate        float32 `json:"penilaian" form:"penilaian"`
+	Description string  `json:"ulasan" form:"ulasan"`
 }
 
 func ToCore(data interface{}) *comment.Core {
