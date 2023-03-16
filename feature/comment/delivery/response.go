@@ -4,7 +4,7 @@ import "airbnb/feature/comment"
 
 type CommentResponse struct {
 	ID          uint    `json:"id"`
-	HomeId      uint    `json:"home_id"`
+	UserId      uint    `json:"user_id"`
 	Rate        float32 `json:"rate"`
 	Description string  `json:"description"`
 }
@@ -12,7 +12,7 @@ type CommentResponse struct {
 func ToCommentResponse(data comment.Core) CommentResponse {
 	return CommentResponse{
 		ID:          data.ID,
-		HomeId:      data.HomeId,
+		UserId:      data.UserId,
 		Rate:        data.Rate,
 		Description: data.Description,
 	}
