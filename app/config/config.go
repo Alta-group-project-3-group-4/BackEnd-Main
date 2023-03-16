@@ -9,7 +9,7 @@ type AppConfig struct {
 	JWTKEY            string
 	keyid             string
 	accesskey         string
-	midtransserverkey string
+	MIDTRANSSERVERKEY string
 }
 
 func InitConfig() *AppConfig {

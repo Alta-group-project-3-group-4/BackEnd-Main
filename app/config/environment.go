@@ -38,8 +38,13 @@ func InitEnv() *AppConfig {
 		app.accesskey = val
 		isRead = false
 		ACCESSKEY = val
-
 	}
+
+	if val, found := os.LookupEnv("MIDTRANSSERVERKEY"); found {
+		app.MIDTRANSSERVERKEY = val
+		isRead = false
+	}
+
 	if val, found := os.LookupEnv("DBPASS"); found {
 		app.DBPASS = val
 		isRead = false
