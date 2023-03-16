@@ -4,7 +4,7 @@ import (
 	img "airbnb/feature/images"
 	"airbnb/utils/helpers"
 	helper "airbnb/utils/s3"
-	"errors"
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -28,11 +28,14 @@ func (delivery *Deliv) CreateGambar(c echo.Context) error {
 	homeid := c.FormValue("home_id")
 	id, _ := strconv.Atoi(homeid)
 	image.HomeID = uint(id)
-	file, _ := c.FormFile("file")
+	file, _ := c.FormFile("image_url")
+
 	if file != nil {
-		res, err := helper.UploadProfile(c)
+
+		res, err := helper.GetUrlImagesFromAWS(*file)
+		fmt.Println("print helper s3", res)
 		if err != nil {
-			return errors.New("Create gambar Failed. Cannot Upload Data.")
+			return c.JSON(http.StatusBadRequest, helpers.ResponseFail("error insert into database"+err.Error()))
 		}
 		image.Image_url = res
 	} else {
