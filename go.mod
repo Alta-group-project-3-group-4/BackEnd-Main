@@ -39,9 +39,11 @@ require (
 require (
 	github.com/aws/aws-sdk-go v1.44.219
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
+	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/go-playground/validator/v10 v10.11.2
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/hashicorp/hcl v1.0.0 // indirect
+	github.com/joho/godotenv v1.5.1
 	github.com/labstack/echo-jwt/v4 v4.1.0
 	github.com/labstack/echo/v4 v4.10.2
 	github.com/magiconair/properties v1.8.7 // indirect

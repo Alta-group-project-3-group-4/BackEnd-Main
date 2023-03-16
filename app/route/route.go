@@ -18,7 +18,7 @@ func InitRouter(db *gorm.DB, e *echo.Echo) {
 	UserRouter(db, e)
 	HomeRouter(db, e)
 	CommentRouter(db, e)
-
+	ImageRouter(db, e)
 }
 
 func index(c echo.Context) error {
