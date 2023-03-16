@@ -20,9 +20,9 @@ func NewGambar(repo image.RepositoryInterface) image.ServiceInterface {
 }
 
 func (service *HomeService) Create(input image.ImagesCore) error {
-	if validateERR := service.validasi.Struct(input); validateERR != nil {
-		return validateERR
-	}
+	// if validateERR := service.validasi.Struct(input); validateERR != nil {
+	// 	return validateERR
+	// }
 
 	errCreate := service.Repository.Create(input)
 	if errCreate != nil {
