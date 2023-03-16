@@ -20,6 +20,7 @@ func New(db *gorm.DB) img.RepositoryInterface {
 
 func (repo *Repository) Create(input img.ImagesCore) error {
 	HomeGorm := CoretoModel(input)
+	HomeGorm.Image_url = input.Image_url
 	fmt.Println("gambar", HomeGorm)
 	tx := repo.db.Create(&HomeGorm)
 

@@ -6,7 +6,7 @@ import (
 
 type ImagesCore struct {
 	ID        uint
-	Image_url string `validate:"required"`
+	Image_url string
 	HomeID    uint
 	CreatedAt time.Time
 	UpdatedAt time.Time
