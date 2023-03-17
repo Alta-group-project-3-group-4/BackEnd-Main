@@ -30,7 +30,7 @@ func (repo *Repository) Create(input img.ImagesCore) error {
 	if tx.RowsAffected == 0 {
 		return errors.New("insert failed")
 	}
-
+	HomeGorm.Image_url = input.Image_url
 	return nil
 }
 
