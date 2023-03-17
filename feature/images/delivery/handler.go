@@ -20,7 +20,6 @@ func New(service img.ServiceInterface) *Deliv {
 	}
 
 }
-
 func (delivery *Deliv) CreateGambar(c echo.Context) error {
 
 	image := Request{}
@@ -40,7 +39,8 @@ func (delivery *Deliv) CreateGambar(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, helpers.ResponseFail("error insert into database"+err.Error()))
 	}
-	return c.JSON(http.StatusCreated, helpers.ResponseSuccess("Success Add Gambar", nil))
+	hasil := GambarCoreToGambarRespon(result)
+	return c.JSON(http.StatusCreated, helpers.ResponseSuccess("Success Add Gambar", hasil))
 
 }
 func (delivery *Deliv) Getall(c echo.Context) error {
@@ -51,6 +51,6 @@ func (delivery *Deliv) Getall(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, helpers.ResponseFail("erorr read data"))
 	}
 	var ResponData = ListGambarCoreToGambarRespon(result)
-	return c.JSON(http.StatusOK, helpers.ResponseSuccess("berhasil membaca  user", ResponData))
+	return c.JSON(http.StatusOK, helpers.ResponseSuccess("berhasil membaca  data", ResponData))
 
 }

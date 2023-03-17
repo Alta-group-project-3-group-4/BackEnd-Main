@@ -2,6 +2,7 @@ package delivery
 
 import (
 	middlewares "airbnb/app/middleware"
+
 	"airbnb/feature/auth"
 	"airbnb/feature/users/delivery"
 	"airbnb/utils/helpers"
@@ -30,9 +31,11 @@ func (u *AuthHandler) Login(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusUnauthorized, helpers.ResponseFail("User not found"))
 	}
-
+	// claim := middlewares.ClaimsToken(c)
+	// toke := userclaim.Id
 	tokesResponse := map[string]any{
 		"token": token,
+		// "userId": toke,
 	}
 
 	return c.JSON(http.StatusOK, helpers.ResponseSuccess("Login Success", tokesResponse))
