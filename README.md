@@ -87,7 +87,7 @@ https://github.com/Alta-group-project-3-group-4/BackEnd-Main.git
 
 ## 🤖Author
 
-- Findryan Kurniap :
+- Eka Putra :
 
   [![GitHub](https://img.shields.io/badge/-EkaPutra-black?style=for-the-badge&logo=github&logoColor=white)]([https://github.com/ekacahyaps)
 - Rischi Yuda:
